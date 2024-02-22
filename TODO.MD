@@ -1,0 +1,3 @@
+- Schema generation
+- Self reference
+- GraphQL 
