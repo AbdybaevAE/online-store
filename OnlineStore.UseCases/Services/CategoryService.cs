@@ -40,9 +40,7 @@ namespace OnlineStore.UseCases.Services
                 categoryRepository
                     .FindAll(cancellationToken)
                     .AsEnumerable()
-                    .Select(
-                        mapper.Map<Category, CategoryResult>
-                    )
+                    .Select(mapper.Map<Category, CategoryResult>)
             );
         }
 
