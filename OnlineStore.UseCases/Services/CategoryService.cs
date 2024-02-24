@@ -50,7 +50,7 @@ namespace OnlineStore.UseCases.Services
             var foundCategory = await categoryRepository.GetByIdAsync(arguments.CategoryID, cancellationToken) ?? throw new CategoryNotFoundException();
             foundCategory.Name = arguments.Name;
             foundCategory.Description = arguments.Description;
-            foundCategory.ParentCategoryID = arguments.ParentCategoryID;
+            // foundCategory.ParentCategoryID = arguments.ParentCategoryID;
             await categoryRepository.UpdateAsync(foundCategory, cancellationToken);
         }
     }

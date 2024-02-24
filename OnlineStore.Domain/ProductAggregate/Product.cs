@@ -16,5 +16,6 @@ namespace OnlineStore.Domain.ProductAggregate
             Price = price;
             Category = category;
         }
+        public Product() { }
     }
 }

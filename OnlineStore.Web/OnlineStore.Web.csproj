@@ -12,4 +12,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineStore.Infrastructure\OnlineStore.Infrastructure.csproj" />
+    <ProjectReference Include="..\OnlineStore.UseCases\OnlineStore.UseCases.csproj" />
+  </ItemGroup>
+
 </Project>
