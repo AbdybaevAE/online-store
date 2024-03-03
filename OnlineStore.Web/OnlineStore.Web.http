@@ -1,6 +1,26 @@
 @OnlineStore.Web_HostAddress = http://localhost:5297
 
-GET {{OnlineStore.Web_HostAddress}}/weatherforecast/
+
+### Get all categories
+GET {{OnlineStore.Web_HostAddress}}/api/categories
 Accept: application/json
 
-###
+
+
+### Get category by id
+GET {{OnlineStore.Web_HostAddress}}/api/categories/b640549e-b409-463e-9654-053ae5910723
+Accept: application/json
+
+
+### Create category
+POST {{OnlineStore.Web_HostAddress}}/api/categories
+Content-Type: application/json
+
+{
+    "name": "For Mans",
+    "description": "Clothes for mans."
+}
+
+
+### Delete category
+DELETE {{OnlineStore.Web_HostAddress}}/api/categories/b640549e-b409-463e-9654-053ae5910723

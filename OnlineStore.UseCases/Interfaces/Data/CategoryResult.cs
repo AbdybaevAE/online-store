@@ -2,5 +2,11 @@
 
 namespace OnlineStore.UseCases.Interfaces.Data
 {
-    public record CategoryResult(CategoryID CategoryID, string CategoryName, string CategoryDescription, CategoryID? ParentCategoryID);
+    public class CategoryResult
+    {
+        public CategoryID CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public string CategoryDescription { get; set; }
+        public CategoryID? ParentCategoryID { get; set; }
+    }
 }

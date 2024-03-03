@@ -12,8 +12,9 @@ namespace OnlineStore.Domain.CategoryAggregate
         public Category? ParentCategory { get; }
         // public List<Product> Products { get; }
         // public Category(string name, string description) : this(name, description) { }
-        public Category(string name, string description, CategoryID? parentCategoryID)
+        public Category(CategoryID id, string name, string description, CategoryID? parentCategoryID)
         {
+            ID = id;
             Name = name.Trim();
             Description = description.Trim();
             _ = parentCategoryID;

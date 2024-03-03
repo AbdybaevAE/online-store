@@ -20,6 +20,7 @@ namespace OnlineStore.UseCases.Services
         {
             createCategoryValidator.ValidateAndThrow(arguments);
             var category = new Category(
+                new CategoryID(Guid.NewGuid()),
                 arguments.Name,
                 arguments.Description,
                 arguments.ParentID
@@ -28,9 +29,9 @@ namespace OnlineStore.UseCases.Services
             return mapper.Map<Category, CategoryResult>(result);
         }
 
-        public async Task DeleteCategory(DeleteCategoryArguments arguments, CancellationToken cancellationToken)
+        public async Task DeleteCategory(CategoryID categoryID, CancellationToken cancellationToken)
         {
-            var category = await categoryRepository.GetByIdAsync(arguments.CategoryID, cancellationToken) ?? throw new CategoryNotFoundException();
+            var category = await categoryRepository.GetByIdAsync(categoryID, cancellationToken) ?? throw new CategoryNotFoundException();
             await categoryRepository.DeleteAsync(category, cancellationToken);
         }
 
@@ -44,13 +45,19 @@ namespace OnlineStore.UseCases.Services
             );
         }
 
+        public async Task<CategoryResult> GetCategoryByID(CategoryID categoryID, CancellationToken cancellationToken)
+        {
+            var foundCategory = await categoryRepository.GetByIdAsync(categoryID, cancellationToken) ?? throw new CategoryNotFoundException();
+            return mapper.Map<Category, CategoryResult>(foundCategory);
+        }
+
         public async Task UpdateCategory(UpdateCategoryArguments arguments, CancellationToken cancellationToken)
         {
             updateCategoryValidator.ValidateAndThrow(arguments);
             var foundCategory = await categoryRepository.GetByIdAsync(arguments.CategoryID, cancellationToken) ?? throw new CategoryNotFoundException();
             foundCategory.Name = arguments.Name;
             foundCategory.Description = arguments.Description;
-            // foundCategory.ParentCategoryID = arguments.ParentCategoryID;
+            foundCategory.ParentCategoryID = arguments.ParentCategoryID;
             await categoryRepository.UpdateAsync(foundCategory, cancellationToken);
         }
     }

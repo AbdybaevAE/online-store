@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineStore.UseCases\OnlineStore.UseCases.csproj" />
+  </ItemGroup>
+
 </Project>
